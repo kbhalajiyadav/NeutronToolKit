@@ -2,6 +2,8 @@
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kbhalajiyadav/NeutronToolKit/blob/main/notebooks/NeutronToolKit_Colab_Quickstart.ipynb)
 
+**Want a browser-based interactive interface?** NeutronToolKit includes a [Streamlit prototype](apps/streamlit_app.py) with file selection, plots, isotope scenarios and model guidance. It is not yet deployed to a public URL. Read the [browser interface options](docs/browser-interfaces.md).
+
 **No WSL or administrator rights?** Open the badge in a browser to run the public example data, preview models, and explore deuteration designs in a temporary Google Colab session. The terminal file browser is replaced by notebook selection widgets. See [Colab guide](docs/colab.md).
 
 A reproducible, Python-based toolkit for SANS and USANS **reduced-data analysis**, intended for handoff between lab computers and students.

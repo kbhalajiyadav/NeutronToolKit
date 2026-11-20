@@ -40,3 +40,8 @@ The bootstrap prints the Git commit SHA and Python version. Colab follows the mo
 Sources:
 - https://research.google.com/colaboratory/faq.html
 - https://colab.research.google.com/notebooks/snippets/advanced_outputs.ipynb
+
+
+## Import error in Section 2
+
+If Colab displays ModuleNotFoundError for neutrontoolkit, run the Section 1 installation cell again in the CURRENT runtime. Wait for the line 'Import success'. If pip reports an error, read that full error before running further cells. Colab disconnects can reset packages and the notebook install must then be repeated.

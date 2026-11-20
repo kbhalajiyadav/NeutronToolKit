@@ -96,3 +96,8 @@ This error commonly indicates a missing Virtual Machine Platform / WSL feature o
 In the meantime, use the [Open in Colab notebook](../notebooks/NeutronToolKit_Colab_Quickstart.ipynb) from the README; it requires no local WSL or Docker. Only upload files approved for Google cloud processing. For a different no-admin local path later, a per-user Python environment may be permitted, subject to organizational policy and package compatibility.
 
 Official troubleshooting: https://learn.microsoft.com/en-us/windows/wsl/troubleshooting
+
+
+## WSL error 0x80370114 when hardware virtualization is enabled
+
+If Task Manager reports Virtualization: Enabled and systeminfo reports an existing hypervisor, do NOT assume BIOS virtualization is disabled. First have an authorized Windows administrator verify VirtualMachinePlatform and Microsoft-Windows-Subsystem-Linux features, and any institutional security policy. WSL status may report a generic virtualization error even when hardware virtualization is active. A Windows restart is often required after enabling features. No local bypass is recommended. Until then use the Colab badge at the top of README.
