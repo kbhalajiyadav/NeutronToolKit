@@ -3,10 +3,10 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 [project]
 name = "neutrontoolkit"
-version = "0.3.0"
+version = "0.4.0"
 description = "Reduced neutron scattering data browser, plots and contrast analysis"
 requires-python = ">=3.11"
-dependencies = ["numpy", "matplotlib", "periodictable", "sasmodels", "sasdata", "bumps", "textual"]
+dependencies = ["numpy", "scipy>=1.11", "matplotlib", "periodictable", "sasmodels", "sasdata", "bumps", "textual"]
 [project.scripts]
 ntk = "neutrontoolkit.cli:main"
 [tool.setuptools.packages.find]
