@@ -1,0 +1,5 @@
+# Copy to ~/.ssh/config on your personal device; do not commit secrets.
+Host vcu-athena
+    HostName athena.hprc.vcu.edu
+    User YOUR_VCU_EID
+    ServerAliveInterval 30

@@ -2,7 +2,7 @@
 
 A reproducible, Python-based toolkit for SANS and USANS **reduced-data analysis**, intended for handoff between lab computers and students.
 
-**v0.2 scope:** interactive reduced 1D file browser, keyboard selection and filters, I(Q)/Kratky/Porod/Guinier plots, quality checks, coherent neutron SLD, mixture SLD, and fixed-parameter sasmodels model previews. This is not an ORNL raw-event reduction tool and does not yet do fitted structural inference.
+**v0.3 scope:** interactive reduced 1D file browser, keyboard selection and filters, I(Q)/Kratky/Porod/Guinier plots, quality checks, coherent neutron SLD, mixture SLD, and fixed-parameter sasmodels model previews. This is not an ORNL raw-event reduction tool and does not yet do fitted structural inference.
 
 ## New lab laptop (Windows 11)
 
@@ -89,3 +89,23 @@ Run these from the repository root (or prefix with 'docker compose run --rm tool
 These are exploratory screening capabilities. Full instrumental resolution validation, constrained H/D joint fitting, global optimization/Bumps posterior sampling, and raw-event reduction integrations remain future work. CI installation/test checks do not replace instrument-level scientific validation.
 
 Environment note: environment.yml is a shared dependency specification, **not yet a fully frozen cross-platform lockfile**. A lockfile and versioned container image digest are required before declaring a final lab release reproducible byte-for-byte.
+
+
+## v0.3 — Lab deployment strategy and isotope-design scenarios
+
+NeutronToolKit wraps maintained scientific libraries rather than reimplementing their algorithms. New documents:
+
+- [Architecture and ownership boundaries](docs/architecture.md)
+- [Fresh Windows/WSL installation](docs/setup-fresh-laptop.md)
+- [VCU Athena HPC profile and Slurm](docs/athena.md)
+- [Site-selective deuteration calculation and limits](docs/deuteration-design.md)
+
+New commands after building Docker:
+
+    docker compose run --rm toolkit python -m neutrontoolkit contrast-sweep config/deuteration_design_example.json
+
+The site file is [profiles/vcu-athena.yaml](profiles/vcu-athena.yaml). It is a *declarative profile*, not an automated SSH login or HPC submit function. The Slurm example is [scripts/vcu_athena_contrast.sbatch](scripts/vcu_athena_contrast.sbatch), requiring a validated container image and authorized cluster access.
+
+The deuteration example uses **assumed H-state densities and unknown prices**. It reports SLD changes and a *conditional component-SLD variance proxy*, not a validated 3-nm peak-height improvement or real purchasing-cost ranking. Each configuration needs scientific and procurement validation.
+
+GitHub CI validates scientific package installation and synthetic regression tests. Docker build, the Athena runtime and experimental resolution remain separately unverified. For a production lab release, create a Conda lockfile and versioned container digest.

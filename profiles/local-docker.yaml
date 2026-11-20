@@ -1,0 +1,8 @@
+profile_version: 1
+name: local-docker
+site: Lab laptop
+scheduler: local
+container_runtime: docker
+compose_file: compose.yaml
+image: neutron-toolkit:dev
+data_directory: data/reduced

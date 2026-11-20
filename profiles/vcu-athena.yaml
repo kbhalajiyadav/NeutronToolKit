@@ -1,0 +1,19 @@
+# VCU Athena: documented site profile; credentials and SIF image are NOT stored.
+profile_version: 1
+name: vcu-athena
+site: VCU High Performance Research Computing
+ssh_host: athena.hprc.vcu.edu
+platform: Rocky Linux 9
+off_campus_vpn_may_be_required: true
+scheduler: slurm
+partition: cpu
+resource_defaults:
+  cpus_per_task: 2
+  memory: 8G
+  walltime: "00:30:00"
+container_runtime: apptainer
+container_module: apptainer
+container_image_sif: null
+data_directory: null
+job_template: scripts/vcu_athena_contrast.sbatch
+official_docs: https://wiki-vcu.atlassian.net/wiki/spaces/unix/pages/45973545/Athena+cluster

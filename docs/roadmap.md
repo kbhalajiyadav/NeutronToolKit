@@ -24,3 +24,7 @@ One-command installation, training examples, command recipes per beamline, locke
 ## Stage 2a — first model-screening implementation
 
 A documented evidence-gated model guide, bounded weighted least-squares comparison of two or more sasmodels hypotheses on common measured Q, explicit optional pinhole or slit resolution settings, AICc/BIC/residual output, conservative run metadata matching, read-only ORNL software inventory and a generic Slurm job template. Scientific validation of resolution and fit behavior remains required.
+
+## Stage 2b — wrapper-first + HPC profile + isotope-design prototype
+
+Descriptive VCU Athena profile and an independent Apptainer/Slurm batch template. Site-selective nominal H/D isotope fractions, input ratio sweeps, actual labeled weight-percent bookkeeping and component-SLD variance screening using PeriodicTable. No actual vendor pricing, core-tail structural scattering, background prediction, automatic remote login or validated HPC deployment yet.

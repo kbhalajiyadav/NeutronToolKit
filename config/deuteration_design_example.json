@@ -1,0 +1,33 @@
+{
+  "description": "SCENARIO EXAMPLE ONLY: density assumptions and unknown prices, verify against experiment and vendors.",
+  "reference_batch_H_g": 1.0,
+  "max_scenarios": 25000,
+  "compositions": [
+    {"name": "reference_20_40_40", "protonated_mass_fractions": [0.20,0.40,0.40]},
+    {"name": "blue_example_80_10_10", "protonated_mass_fractions": [0.80,0.10,0.10]},
+    {"name": "green_example_52_24_24", "protonated_mass_fractions": [0.52,0.24,0.24]},
+    {"name": "red_example_38_31_31", "protonated_mass_fractions": [0.38,0.31,0.31]}
+  ],
+  "components": [
+    {
+      "id": "COC", "formula_H": "C46H80O3", "density_H_g_cm3": 0.96,
+      "sites": {
+        "cholesteryl": {"h_count": 45, "fractions": [0,0.5,1], "incremental_usd_per_mol_fully_labeled": null},
+        "oleyl_tail": {"h_count": 35, "fractions": [0,0.25,0.5,1], "incremental_usd_per_mol_fully_labeled": null}
+      }
+    },
+    {
+      "id": "CP", "formula_H": "C36H62O2", "density_H_g_cm3": 0.96,
+      "sites": {
+        "cholesteryl": {"h_count": 45, "fractions": [0,0.5,1], "incremental_usd_per_mol_fully_labeled": null},
+        "pelargonate_tail": {"h_count": 17, "fractions": [0,0.25,0.5,1], "incremental_usd_per_mol_fully_labeled": null}
+      }
+    },
+    {
+      "id": "CC", "formula_H": "C27H45Cl", "density_H_g_cm3": 1.00,
+      "sites": {
+        "cholesteryl": {"h_count": 45, "fractions": [0,0.5,1], "incremental_usd_per_mol_fully_labeled": null}
+      }
+    }
+  ]
+}
