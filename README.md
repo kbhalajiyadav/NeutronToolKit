@@ -1,5 +1,7 @@
 # NeutronToolKit
 
+**A data-to-decision assistant for neutron scattering.** Start with the data you have, learn what evidence is missing, test physically eligible models using maintained scientific software, and receive either an auditable conclusion or an explicit inconclusive result. See the [end-user product brief](docs/end-user-product-brief.md).
+
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kbhalajiyadav/NeutronToolKit/blob/main/notebooks/NeutronToolKit_Colab_Quickstart.ipynb)
 
 **Want a browser-based interactive interface?** NeutronToolKit includes a [Streamlit prototype](apps/streamlit_app.py) with file selection, plots, isotope scenarios and model guidance. It is not yet deployed to a public URL. Read the [browser interface options](docs/browser-interfaces.md).

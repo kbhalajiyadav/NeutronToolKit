@@ -8,13 +8,14 @@ import streamlit as st
 
 from neutrontoolkit.files import load, quality
 from neutrontoolkit.plots import plot_files
+from neutrontoolkit.triage import analyze as triage_files
 from neutrontoolkit.model_rules import from_file
 from neutrontoolkit.deuteration import sweep
 
 ROOT = Path(__file__).resolve().parents[1]
 st.set_page_config(page_title="NeutronToolKit", layout="wide")
 st.title("NeutronToolKit")
-st.caption("Guided neutron-scattering analysis of reduced 1D curves and isotopic scenarios")
+st.caption("Start with trustworthy data, understand missing evidence, then fit scientifically eligible models")
 st.warning(
     "Demo and exploratory science only. Upload files to third-party cloud platforms "
     "only when authorized. The isotope metric is a conditional SLD proxy, "
@@ -56,6 +57,21 @@ with data_tab:
             if selected:
                 try:
                     paths = [files[name] for name in selected]
+                    st.subheader("Are these data ready for scientific analysis?")
+                    audit = triage_files(paths)
+                    st.caption("First-pass numerical checks only; instrument calibration and model validity remain unverified.")
+                    for dataset in audit["datasets"]:
+                        st.markdown("**" + Path(dataset["input"]).name + "** — " + dataset["preliminary_stage"])
+                        for action in dataset["required_next_actions"]:
+                            st.write("• " + action)
+                        for note in dataset["notes"]:
+                            st.caption(note)
+                    st.download_button(
+                        "Download scientific triage (JSON)",
+                        json.dumps(audit, indent=2).encode("utf-8"),
+                        file_name="neutrontoolkit-triage.json",
+                        mime="application/json"
+                    )
                     for name in selected:
                         with st.expander("QC: "+name):
                             st.json(quality(load(files[name])))
