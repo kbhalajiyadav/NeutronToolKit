@@ -115,3 +115,12 @@ The site file is [profiles/vcu-athena.yaml](profiles/vcu-athena.yaml). It is a *
 The deuteration example uses **assumed H-state densities and unknown prices**. It reports SLD changes and a *conditional component-SLD variance proxy*, not a validated 3-nm peak-height improvement or real purchasing-cost ranking. Each configuration needs scientific and procurement validation.
 
 GitHub CI validates scientific package installation and synthetic regression tests. Docker build, the Athena runtime and experimental resolution remain separately unverified. For a production lab release, create a Conda lockfile and versioned container digest.
+
+
+## Experimental model validation (reduced curves)
+
+The model-validation module uses measured reduced one-dimensional Q, I(Q), dI and optional dQ to reproduce empirical Lorentzian/Gaussian fits and compare against a no-peak baseline, including residuals, AICc, low-Q exponent window sensitivity and input SHA256.
+
+    python -m neutrontoolkit validate-peaks data/reduced/sampleA.dat data/reduced/sampleB.dat --outdir outputs/model_validation
+
+Or prefix with the usual Docker Compose run command. See [scientific model validation](docs/real-data-model-validation.md). Raw ORNL data and unpublished reduction logs **must not be committed** to this public repository. The output is an empirical audit, not evidence of a specific cholesteric, smectic or two-phase structure. Use the native sasmodels/SasView models for subsequent physically validated fits.

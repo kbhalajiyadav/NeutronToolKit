@@ -36,6 +36,9 @@ def make_parser():
     x = sub.add_parser("contrast-sweep", help="Enumerate isotope label fractions and reference compositions")
     x.add_argument("json_config")
     x.add_argument("--outdir")
+    x = sub.add_parser("validate-peaks", help="Reproduce and challenge empirical peak fits on reduced 1D data")
+    x.add_argument("files", nargs="+")
+    x.add_argument("--outdir", default="outputs/model_validation")
     sub.add_parser("doctor", help="Check scientific dependency installation")
     return p
 
@@ -84,6 +87,9 @@ def main(argv=None):
         elif a.command == "contrast-sweep":
             from .deuteration import write_sweep
             print(write_sweep(a.json_config, a.outdir))
+        elif a.command == "validate-peaks":
+            from .peak_validation import write_report
+            print(write_report(a.files, a.outdir))
         elif a.command == "simulate":
             from .models import preview
             print(preview(a.json_config, a.data, a.outdir))
