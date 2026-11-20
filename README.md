@@ -129,3 +129,13 @@ Or prefix with the usual Docker Compose run command. See [scientific model valid
 ## Evidence-based full-curve modeling
 
 See [whole-curve qualification protocol](docs/whole-curve-validation-protocol.md) and [blank evidence manifest](config/model_evidence_template.json). These define chemistry-based parameter priors, legitimate single/composite models, instrument and error gates, and a mandatory **inconclusive** outcome for failed fits. They are specifications, not validated physical-model fits; unpublished experimental files stay private.
+
+
+## Start here: data-to-decision scientific triage
+
+**NeutronToolKit's goal is to help neutron users reach defensible conclusions, not merely provide more fit functions.** A first end-user command now checks an existing reduced I(Q) file and explains what can be trusted, what is missing, and what to do next:
+
+    python -m neutrontoolkit triage data/examples/synthetic_iq.dat
+    python -m neutrontoolkit triage data/reduced/approved_sample.dat --context config/triage_context_example.json
+
+The command saves a JSON report and NEXT_STEPS.md under outputs/triage (gitignored). It never guesses instrument resolution or declares a physical model. The [product brief](docs/end-user-product-brief.md) defines users, pain points, minimum acceptance criteria and features we should **not** build yet. Experimental files remain private.

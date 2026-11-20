@@ -1,0 +1,15 @@
+{
+  "description": "SYNTHETIC CONTEXT TEMPLATE. Replace nulls with verified experimental facts; not a scientifically certified dataset.",
+  "instrument": null,
+  "reduction_log_or_report": null,
+  "resolution": {
+    "mode": "unknown",
+    "source": null,
+    "dq_semantics": null
+  },
+  "experiment": {
+    "temperature_C": null,
+    "phase_evidence": null,
+    "sample_description": null
+  }
+}

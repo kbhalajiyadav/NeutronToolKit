@@ -39,6 +39,10 @@ def make_parser():
     x = sub.add_parser("validate-peaks", help="Reproduce and challenge empirical peak fits on reduced 1D data")
     x.add_argument("files", nargs="+")
     x.add_argument("--outdir", default="outputs/model_validation")
+    x = sub.add_parser("triage", help="Data-to-decision first pass; QC and missing evidence")
+    x.add_argument("files", nargs="+")
+    x.add_argument("--context", help="Optional experiment metadata JSON")
+    x.add_argument("--outdir", default="outputs/triage")
     sub.add_parser("doctor", help="Check scientific dependency installation")
     return p
 
@@ -90,6 +94,9 @@ def main(argv=None):
         elif a.command == "validate-peaks":
             from .peak_validation import write_report
             print(write_report(a.files, a.outdir))
+        elif a.command == "triage":
+            from .triage import write_report
+            print(write_report(a.files, a.context, a.outdir))
         elif a.command == "simulate":
             from .models import preview
             print(preview(a.json_config, a.data, a.outdir))
