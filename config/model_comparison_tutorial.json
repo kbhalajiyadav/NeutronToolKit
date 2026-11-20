@@ -1,0 +1,29 @@
+{
+  "description": "Illustration with synthetic teaching data, not ORNL measurements",
+  "instrument": "SYNTHETIC_DEMO",
+  "data": "../data/examples/synthetic_iq.dat",
+  "q_min_A_inv": 0.005,
+  "q_max_A_inv": 0.4,
+  "resolution": {"mode": "none", "reason": "Synthetic demonstration; no instrument."},
+  "max_nfev": 100,
+  "candidates": [
+    {
+      "name": "powerlaw_fixed2", "model": "power_law",
+      "hypothesis": "Smooth q^-2 decay, not a unique microscopic structure",
+      "fixed": {"power": 2.0},
+      "fit": {
+        "scale": {"initial": 0.0002, "min": 0.000000001, "max": 0.01},
+        "background": {"initial": 0.5, "min": 0.000001, "max": 3.0}
+      }
+    },
+    {
+      "name": "powerlaw_fixed4", "model": "power_law",
+      "hypothesis": "Smooth q^-4 decay, not a unique microscopic structure",
+      "fixed": {"power": 4.0},
+      "fit": {
+        "scale": {"initial": 0.000000001, "min": 0.0000000000001, "max": 0.00001},
+        "background": {"initial": 0.5, "min": 0.000001, "max": 3.0}
+      }
+    }
+  ]
+}

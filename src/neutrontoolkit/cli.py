@@ -25,6 +25,14 @@ def make_parser():
     x.add_argument("json_config")
     x.add_argument("--data")
     x.add_argument("--outdir", default="outputs/models")
+    x = sub.add_parser("guide", help="Physics-gated model hypothesis suggestions")
+    x.add_argument("json_config")
+    x = sub.add_parser("compare", help="Fit competing sasmodels hypotheses with bounded least squares")
+    x.add_argument("json_config")
+    x.add_argument("--outdir")
+    x = sub.add_parser("plan-runs", help="Dry-run instrument metadata matching; no reduction")
+    x.add_argument("csv_manifest")
+    x.add_argument("--out", default="outputs/reduction/matching_plan.json")
     sub.add_parser("doctor", help="Check scientific dependency installation")
     return p
 
@@ -61,6 +69,15 @@ def main(argv=None):
         elif a.command == "mix-sld":
             from .contrast import from_json
             print(json.dumps(from_json(a.json_config), indent=2))
+        elif a.command == "guide":
+            from .model_rules import from_file
+            print(json.dumps(from_file(a.json_config), indent=2))
+        elif a.command == "compare":
+            from .fitting import compare
+            print(compare(a.json_config, a.outdir))
+        elif a.command == "plan-runs":
+            from .run_manifest import write_plan
+            print(write_plan(a.csv_manifest, a.out))
         elif a.command == "simulate":
             from .models import preview
             print(preview(a.json_config, a.data, a.outdir))

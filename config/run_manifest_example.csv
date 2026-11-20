@@ -1,0 +1,7 @@
+run_id,instrument,configuration,sample_id,role
+100001,EQSANS,synthetic_config,A,empty_beam
+100002,EQSANS,synthetic_config,A,background
+100003,EQSANS,synthetic_config,A,transmission
+100004,EQSANS,synthetic_config,A,sample
+100005,EQSANS,synthetic_config,B,transmission
+100006,EQSANS,synthetic_config,B,sample

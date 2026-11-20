@@ -1,0 +1,11 @@
+{
+  "instrument": "EQSANS",
+  "sample_state": "neat_bulk",
+  "observations": {
+    "broad_peak_q_A_inv": 0.20,
+    "anisotropic_2d": null,
+    "independent_two_phase_evidence": false,
+    "higher_order_bragg_peaks": false
+  },
+  "notes": "0.20 A^-1 is illustrative from earlier work; not a validated fit to data."
+}

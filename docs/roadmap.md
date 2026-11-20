@@ -20,3 +20,7 @@ Raw-event reduction via drtsans/Mantid as a separately versioned execution image
 ## Stage 4 — student operation
 
 One-command installation, training examples, command recipes per beamline, locked dependency versions, published Docker images with digests, data-management policy, code review and regression acceptance reports.
+
+## Stage 2a — first model-screening implementation
+
+A documented evidence-gated model guide, bounded weighted least-squares comparison of two or more sasmodels hypotheses on common measured Q, explicit optional pinhole or slit resolution settings, AICc/BIC/residual output, conservative run metadata matching, read-only ORNL software inventory and a generic Slurm job template. Scientific validation of resolution and fit behavior remains required.

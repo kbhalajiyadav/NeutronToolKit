@@ -71,3 +71,21 @@ Model preview is calculated with sasmodels using **user-supplied parameters** an
 **Do not commit raw beamline files, unpublished sample data, ONCat tokens, passwords or credentials.** The output and reduced-data directories are gitignored by default.
 
 For documentation of the real ORNL environment and commands see [docs/ornl.md](docs/ornl.md).
+
+
+## v0.2: model guidance, fitting screens, and HPC preparation
+
+Run these from the repository root (or prefix with 'docker compose run --rm toolkit'):
+
+    python -m neutrontoolkit guide config/model_guidance_cholesteric.json
+    python -m neutrontoolkit compare config/model_comparison_tutorial.json
+    python -m neutrontoolkit plan-runs config/run_manifest_example.csv
+
+- [Evidence-first model selection](docs/model-selection.md): Q range, resolution, competing hypotheses, weighted fits, AICc/BIC, residuals and limits.
+- [ORNL inventory, autoreduction and HPC](docs/remote-hpc.md): read-only commands, ORNL tools, Slurm template and access cautions.
+- scripts/ornl_inventory.sh is read-only and runs only where you are authorized.
+- scripts/slurm_compare.sbatch is a portable template requiring cluster-specific validation.
+
+These are exploratory screening capabilities. Full instrumental resolution validation, constrained H/D joint fitting, global optimization/Bumps posterior sampling, and raw-event reduction integrations remain future work. CI installation/test checks do not replace instrument-level scientific validation.
+
+Environment note: environment.yml is a shared dependency specification, **not yet a fully frozen cross-platform lockfile**. A lockfile and versioned container image digest are required before declaring a final lab release reproducible byte-for-byte.
