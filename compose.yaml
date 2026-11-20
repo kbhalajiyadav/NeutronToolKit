@@ -1,0 +1,19 @@
+services:
+  toolkit:
+    build: .
+    image: neutron-toolkit:dev
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    stdin_open: true
+    tty: true
+    command: ["python", "-m", "neutrontoolkit", "browse", "data/reduced"]
+  lab:
+    build: .
+    image: neutron-toolkit:dev
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    ports:
+      - "127.0.0.1:8888:8888"
+    command: ["jupyter", "lab", "--no-browser", "--ip=0.0.0.0", "--port=8888", "--ServerApp.root_dir=/workspace"]

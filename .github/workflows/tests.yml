@@ -1,0 +1,20 @@
+name: Tests
+on: [push, pull_request]
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: environment.yml
+          cache-environment: true
+      - name: Install project
+        shell: bash -el {0}
+        run: python -m pip install --no-deps -e .
+      - name: Scientific imports
+        shell: bash -el {0}
+        run: python -c "import sasmodels, sasdata, bumps, periodictable, textual"
+      - name: Tests
+        shell: bash -el {0}
+        run: python -m pytest -q

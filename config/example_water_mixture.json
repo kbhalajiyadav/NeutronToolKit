@@ -1,0 +1,7 @@
+{
+  "description": "Demonstration of mass fraction to volume fraction conversion; not experimental data",
+  "components": [
+    {"formula": "H2O", "mass_fraction": 0.5, "density_g_cm3": 1.0},
+    {"formula": "D2O", "mass_fraction": 0.5, "density_g_cm3": 1.1056}
+  ]
+}

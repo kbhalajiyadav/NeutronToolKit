@@ -1,0 +1,14 @@
+{
+  "description": "Synthetic model demonstration only. NOT a fitted morphology for a cholesteric neat blend.",
+  "model": "sphere",
+  "parameters": {
+    "scale": 0.01,
+    "background": 0.001,
+    "radius": 100.0,
+    "sld": 2.0,
+    "sld_solvent": 0.0
+  },
+  "qmin": 0.0001,
+  "qmax": 0.5,
+  "points": 180
+}

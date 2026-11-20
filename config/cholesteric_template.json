@@ -1,0 +1,8 @@
+{
+  "description": "Actual 20/40/40 formulation on mass basis. REPLACE null densities before calculating SLD.",
+  "components": [
+    {"formula": "C46H80O3", "mass_fraction": 0.2, "density_g_cm3": null},
+    {"formula": "C36H62O2", "mass_fraction": 0.4, "density_g_cm3": null},
+    {"formula": "C27H45Cl", "mass_fraction": 0.4, "density_g_cm3": null}
+  ]
+}

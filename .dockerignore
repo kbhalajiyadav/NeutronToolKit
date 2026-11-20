@@ -1,0 +1,9 @@
+.git
+.venv
+.pytest_cache
+__pycache__
+data/raw
+data/reduced
+outputs
+*.nxs
+*.nxs.h5

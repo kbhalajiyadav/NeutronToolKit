@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+.env
+.ipynb_checkpoints/
+.DS_Store
+outputs/*
+!outputs/.gitkeep
+data/reduced/*
+!data/reduced/.gitkeep
+data/raw/
+*.nxs
+*.nxs.h5

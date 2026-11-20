@@ -1,0 +1,17 @@
+name: neutron-toolkit
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - periodictable
+  - sasmodels
+  - sasdata
+  - bumps
+  - textual
+  - pytest
+  - jupyterlab

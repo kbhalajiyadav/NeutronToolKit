@@ -1,0 +1,10 @@
+{
+  "name": "NeutronToolKit",
+  "dockerComposeFile": "../compose.yaml",
+  "service": "toolkit",
+  "workspaceFolder": "/workspace",
+  "overrideCommand": true,
+  "customizations": {
+    "vscode": { "extensions": ["ms-python.python", "ms-toolsai.jupyter"] }
+  }
+}
