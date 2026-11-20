@@ -1,5 +1,7 @@
 # NeutronToolKit
 
+**Current research sprint (November 21–December 5, 2026):** [Research decision tracker — issues #1–#5 and the December 5 deliverable](https://github.com/kbhalajiyadav/NeutronToolKit/issues/6). Goal: determine which models are supportable and which minimum-viable deuteration experiments are worth testing, with explicit uncertainty and feasibility limits. Public GitHub contains plans and software only; unpublished experimental data stay private.
+
 **A data-to-decision assistant for neutron scattering.** Start with the data you have, learn what evidence is missing, test physically eligible models using maintained scientific software, and receive either an auditable conclusion or an explicit inconclusive result. See the [end-user product brief](docs/end-user-product-brief.md).
 
 [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kbhalajiyadav/NeutronToolKit/blob/main/notebooks/NeutronToolKit_Colab_Quickstart.ipynb)
