@@ -1,5 +1,9 @@
 # NeutronToolKit
 
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/kbhalajiyadav/NeutronToolKit/blob/main/notebooks/NeutronToolKit_Colab_Quickstart.ipynb)
+
+**No WSL or administrator rights?** Open the badge in a browser to run the public example data, preview models, and explore deuteration designs in a temporary Google Colab session. The terminal file browser is replaced by notebook selection widgets. See [Colab guide](docs/colab.md).
+
 A reproducible, Python-based toolkit for SANS and USANS **reduced-data analysis**, intended for handoff between lab computers and students.
 
 **v0.3 scope:** interactive reduced 1D file browser, keyboard selection and filters, I(Q)/Kratky/Porod/Guinier plots, quality checks, coherent neutron SLD, mixture SLD, and fixed-parameter sasmodels model previews. This is not an ORNL raw-event reduction tool and does not yet do fitted structural inference.

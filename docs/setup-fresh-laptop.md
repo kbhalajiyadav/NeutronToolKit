@@ -87,3 +87,12 @@ Use Micromamba/Miniforge inside Ubuntu as a local environment:
     python -m pytest -q
 
 Do not mix the environment into other lab projects. The Micromamba installation itself must follow the provider's current documentation.
+
+
+## Blocked Windows WSL installation (0x80370114)
+
+This error commonly indicates a missing Virtual Machine Platform / WSL feature or unavailable virtualization. First check `wsl --status`, `wsl --list --verbose` in PowerShell and the Task Manager CPU virtualization status. Installing Ubuntu again does not enable a missing host feature. On a managed device, ask IT to enable the approved Windows Subsystem for Linux / Virtual Machine Platform features and verify firmware virtualization; this requires administrator-level configuration and possibly a reboot. Do not bypass lab security policy or reinstall/format the laptop.
+
+In the meantime, use the [Open in Colab notebook](../notebooks/NeutronToolKit_Colab_Quickstart.ipynb) from the README; it requires no local WSL or Docker. Only upload files approved for Google cloud processing. For a different no-admin local path later, a per-user Python environment may be permitted, subject to organizational policy and package compatibility.
+
+Official troubleshooting: https://learn.microsoft.com/en-us/windows/wsl/troubleshooting
