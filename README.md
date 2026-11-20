@@ -124,3 +124,8 @@ The model-validation module uses measured reduced one-dimensional Q, I(Q), dI an
     python -m neutrontoolkit validate-peaks data/reduced/sampleA.dat data/reduced/sampleB.dat --outdir outputs/model_validation
 
 Or prefix with the usual Docker Compose run command. See [scientific model validation](docs/real-data-model-validation.md). Raw ORNL data and unpublished reduction logs **must not be committed** to this public repository. The output is an empirical audit, not evidence of a specific cholesteric, smectic or two-phase structure. Use the native sasmodels/SasView models for subsequent physically validated fits.
+
+
+## Evidence-based full-curve modeling
+
+See [whole-curve qualification protocol](docs/whole-curve-validation-protocol.md) and [blank evidence manifest](config/model_evidence_template.json). These define chemistry-based parameter priors, legitimate single/composite models, instrument and error gates, and a mandatory **inconclusive** outcome for failed fits. They are specifications, not validated physical-model fits; unpublished experimental files stay private.

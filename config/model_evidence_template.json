@@ -1,0 +1,49 @@
+{
+  "description": "Example scientific evidence manifest, NOT directly executable fitting config",
+  "instrument": "REPLACE",
+  "local_approved_data_path": "data/reduced/REPLACE.dat",
+  "reduced_data": {
+    "q_units": "A^-1",
+    "intensity_units": "cm^-1",
+    "has_dI": null,
+    "dQ_semantics": "UNVERIFIED",
+    "original_configurations": [],
+    "reduction_log": null
+  },
+  "sample": {
+    "temperature_C": null,
+    "thickness_mm": null,
+    "phase_evidence": null,
+    "chemistry": [
+      {
+        "formula": "REPLACE",
+        "mass_fraction": null,
+        "density_g_cm3": null,
+        "density_source": null
+      }
+    ]
+  },
+  "candidate_eligibility": [
+    {
+      "model": "broad_peak",
+      "level": "empirical",
+      "evidence": "reproducible scattering peak"
+    },
+    {
+      "model": "sphere",
+      "level": "blocked_until_evidence",
+      "evidence": "discrete particles/droplets independently observed"
+    },
+    {
+      "model": "teubner_strey",
+      "level": "blocked_until_evidence",
+      "evidence": "two physically separated correlated phases"
+    },
+    {
+      "model": "lamellar_stack_paracrystal",
+      "level": "blocked_until_evidence",
+      "evidence": "independent evidence of layered order"
+    }
+  ],
+  "decision_rule": "Physical eligibility then resolution-aware shared-Q fit then posterior/predictive checks; return inconclusive if all fail"
+}
