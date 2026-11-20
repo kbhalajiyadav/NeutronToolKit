@@ -39,3 +39,27 @@ def test_reports_are_private_file_outputs_with_actions(tmp_path):
 def test_invalid_context_is_rejected():
     with pytest.raises(ValueError,match="object"):
         analyze(["data/examples/synthetic_iq.dat"],["not a mapping"])
+
+
+def test_detects_resolution_regime_change_without_assigning_configuration(tmp_path):
+    q = np.linspace(0.01, 0.10, 25)
+    data = tmp_path/"resolution_change.dat"
+    intensity = np.full_like(q, 2.0)
+    di = np.full_like(q, 0.01)
+    dq = np.full_like(q, 0.001)
+    dq[10:] = 0.004
+    np.savetxt(data, np.column_stack([q,intensity,di,dq]))
+    row = analyze([data])["datasets"][0]
+    flagged = row["dq_discontinuity_screening_flags"]
+    assert len(flagged) == 1
+    assert flagged[0]["change_factor"] == pytest.approx(4.0)
+    assert flagged[0]["status"] == "requires_instrument_metadata_review"
+    assert any("merge/reduction provenance" in a for a in row["required_next_actions"])
+    assert row["measurement_validated"] is False
+
+
+def test_constant_dq_requires_no_jump_review(tmp_path):
+    q = np.linspace(0.01, 0.10, 25)
+    data = tmp_path/"smooth_resolution.dat"
+    np.savetxt(data, np.column_stack([q, 2.0+q, np.full_like(q,0.01), np.full_like(q,0.001)]))
+    assert analyze([data])["datasets"][0]["dq_discontinuity_screening_flags"] == []

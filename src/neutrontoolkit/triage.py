@@ -18,6 +18,34 @@ def _provided(value):
     return value is not None and value != "" and value != "unknown"
 
 
+
+
+def detect_dq_discontinuities(q, dq, ratio_threshold=1.75):
+    """Screen abrupt adjacent changes in reported dQ; never assign instrument origin.
+
+    This is a heuristic QA flag, not proof of bad data or an automatic
+    configuration label. Even physically legitimate detector settings may differ.
+    """
+    if dq is None or len(q) < 2:
+        return []
+    positive = (dq[:-1] > 0) & (dq[1:] > 0)
+    ratio = np.ones(len(dq)-1, dtype=float)
+    ratio[positive] = np.maximum(dq[:-1][positive], dq[1:][positive]) / np.minimum(
+        dq[:-1][positive], dq[1:][positive]
+    )
+    candidates = np.where(positive & (ratio > ratio_threshold))[0]
+    return [
+        {
+            "q_before_A_inv": float(q[i]),
+            "q_after_A_inv": float(q[i+1]),
+            "dq_before_A_inv": float(dq[i]),
+            "dq_after_A_inv": float(dq[i+1]),
+            "change_factor": float(ratio[i]),
+            "status": "requires_instrument_metadata_review",
+        }
+        for i in candidates[:30]
+    ]
+
 def analyze(paths, context=None):
     """Return QC, readiness and next actions without guessing facility metadata."""
     if context is None:
@@ -68,6 +96,16 @@ def analyze(paths, context=None):
         elif mode == "none":
             notes.append("Resolution deliberately omitted; peak widths are exploratory, not instrument-corrected.")
             actions.append("Use verified instrumental resolution before quantitative structural conclusions.")
+        dq_flags = detect_dq_discontinuities(curve.q, curve.dq)
+        if dq_flags:
+            notes.append(
+                f"{len(dq_flags)} abrupt adjacent dQ changes flagged (factor >1.75). "
+                "They may indicate differing resolution regimes; not evidence of an error by themselves."
+            )
+            actions.append(
+                "Review instrument-configuration overlap, dQ semantics and the merge/reduction provenance "
+                "before resolution-sensitive model fitting."
+            )
         nonpositive = int(np.count_nonzero(curve.intensity <= 0))
         if nonpositive:
             notes.append(f"{nonpositive} intensities are nonpositive; log plots must flag rather than silently discard them.")
@@ -94,6 +132,8 @@ def analyze(paths, context=None):
             "q_decades": float(math.log10(q_max / q_min)),
             "reciprocal_q_window_not_structural_size": geometric_reciprocal_nm,
             "median_relative_dI_for_positive_I": relative_uncertainty,
+            "dq_discontinuity_screening_flags": dq_flags,
+            "dq_jump_ratio_threshold_heuristic": 1.75,
             "preliminary_stage": preliminary_stage,
             "measurement_validated": False,
             "physical_model_validated": False,

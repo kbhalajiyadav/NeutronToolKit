@@ -142,4 +142,4 @@ See [whole-curve qualification protocol](docs/whole-curve-validation-protocol.md
     python -m neutrontoolkit triage data/examples/synthetic_iq.dat
     python -m neutrontoolkit triage data/reduced/approved_sample.dat --context config/triage_context_example.json
 
-The command saves a JSON report and NEXT_STEPS.md under outputs/triage (gitignored). It never guesses instrument resolution or declares a physical model. The [product brief](docs/end-user-product-brief.md) defines users, pain points, minimum acceptance criteria and features we should **not** build yet. Experimental files remain private.
+The command saves a JSON report and NEXT_STEPS.md under outputs/triage (gitignored). It also flags abrupt adjacent dQ changes as a heuristic reason to review detector-configuration overlap and resolution conventions; the flag does not prove an incorrect merge. It never guesses instrument resolution or declares a physical model. The [product brief](docs/end-user-product-brief.md) defines users, pain points, minimum acceptance criteria and features we should **not** build yet. Experimental files remain private.
