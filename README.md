@@ -2,7 +2,7 @@
 
 A reproducible, Python-based toolkit for SANS and USANS **reduced-data analysis**, intended for handoff between lab computers and students.
 
-**v0.1 scope:** interactive reduced 1D file browser, keyboard selection and filters, I(Q)/Kratky/Porod/Guinier plots, quality checks, coherent neutron SLD, mixture SLD, and fixed-parameter sasmodels model previews. This is not an ORNL raw-event reduction tool and does not yet do fitted structural inference.
+**v0.2 scope:** interactive reduced 1D file browser, keyboard selection and filters, I(Q)/Kratky/Porod/Guinier plots, quality checks, coherent neutron SLD, mixture SLD, and fixed-parameter sasmodels model previews. This is not an ORNL raw-event reduction tool and does not yet do fitted structural inference.
 
 ## New lab laptop (Windows 11)
 
