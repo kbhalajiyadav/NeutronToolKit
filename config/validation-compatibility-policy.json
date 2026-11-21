@@ -1,0 +1,130 @@
+{
+  "schema_version": "0.1",
+  "policy_status": "scientific_specification_not_fully_implemented",
+  "default_if_provenance_missing": "blocked_for_quantitative_interchange",
+  "rules": [
+    {
+      "id": "raw_vs_reduced",
+      "intent": "raw_event_or_count_to_reduced_intensity",
+      "default": "blocked",
+      "requires": [
+        "reduction_pipeline",
+        "recipe",
+        "calibration",
+        "normalization"
+      ]
+    },
+    {
+      "id": "2d_vs_1d",
+      "intent": "quantitative_2d_to_1d_comparison",
+      "default": "review_required",
+      "requires": [
+        "same_run_id",
+        "same_reduction_stage",
+        "same_corrections",
+        "mask_binning_uncertainty_mapping"
+      ]
+    },
+    {
+      "id": "merged_vs_individual",
+      "intent": "merged_and_single_configuration_comparison",
+      "default": "review_required",
+      "requires": [
+        "source_runs",
+        "merge_mapping",
+        "configuration_metadata",
+        "scale_and_resolution_conventions"
+      ]
+    },
+    {
+      "id": "repeat_scans",
+      "intent": "pooled_replicate_or_repeat_run",
+      "default": "review_required",
+      "requires": [
+        "sample_identity",
+        "sample_state",
+        "run_conditions",
+        "aggregation_uncertainty_recipe"
+      ]
+    },
+    {
+      "id": "resolution_semantics",
+      "intent": "resolution_corrected_fit",
+      "default": "blocked",
+      "requires": [
+        "instrument_resolution_source",
+        "dq_semantics",
+        "smearing_kernel"
+      ]
+    },
+    {
+      "id": "di_vs_dq",
+      "intent": "exchange_intensity_uncertainty_and_q_resolution",
+      "default": "blocked",
+      "requires": []
+    },
+    {
+      "id": "absolute_scale",
+      "intent": "absolute_intensity_or_volume_fraction_claim",
+      "default": "blocked",
+      "requires": [
+        "absolute_scale_reference",
+        "correction_chain",
+        "thickness_and_transmission"
+      ]
+    },
+    {
+      "id": "anisotropy",
+      "intent": "2d_orientation_or_alignment_claim",
+      "default": "blocked",
+      "requires": [
+        "reference_2d",
+        "masks_and_geometry",
+        "reduction_corrections",
+        "sample_orientation_conditions"
+      ]
+    },
+    {
+      "id": "sld_internal",
+      "intent": "use_bulk_sld_as_internal_domain_contrast",
+      "default": "blocked",
+      "requires": [
+        "partial_volumes",
+        "fragment_scattering_lengths",
+        "spatial_correlations"
+      ]
+    },
+    {
+      "id": "peak_width",
+      "intent": "interpret_empirical_peak_width_as_physical_length",
+      "default": "blocked",
+      "requires": [
+        "validated_width_model",
+        "resolution_correction",
+        "independent_structural_evidence"
+      ]
+    },
+    {
+      "id": "deuteration_minimum",
+      "intent": "claim_minimum_detectable_label",
+      "default": "blocked",
+      "requires": [
+        "forward_model_uncertainty",
+        "instrument_noise_background",
+        "isotopic_enrichment_and_site",
+        "sample_geometry"
+      ]
+    },
+    {
+      "id": "model_fit_vs_validation",
+      "intent": "infer_physical_model_from_optimizer_convergence",
+      "default": "blocked",
+      "requires": [
+        "hypothesis_evidence",
+        "instrument_validity",
+        "parameter_identifiability",
+        "predictive_check"
+      ]
+    }
+  ]
+}

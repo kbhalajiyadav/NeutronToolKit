@@ -143,3 +143,8 @@ See [whole-curve qualification protocol](docs/whole-curve-validation-protocol.md
     python -m neutrontoolkit triage data/reduced/approved_sample.dat --context config/triage_context_example.json
 
 The command saves a JSON report and NEXT_STEPS.md under outputs/triage (gitignored). It also flags abrupt adjacent dQ changes as a heuristic reason to review detector-configuration overlap and resolution conventions; the flag does not prove an incorrect merge. It never guesses instrument resolution or declares a physical model. The [product brief](docs/end-user-product-brief.md) defines users, pain points, minimum acceptance criteria and features we should **not** build yet. Experimental files remain private.
+
+
+## Data compatibility and scientific validation limits
+
+Before combining 1D/2D data, different instrument configurations, or replicate runs, follow the [non-interchangeability and validation policy](docs/validation-compatibility.md) and the [priority evidence-request checklist](docs/evidence-request-priorities.md). The [machine-readable policy](config/validation-compatibility-policy.json) is a specification and regression fixture, **not** a claim that all gates are currently automated. For a potential future constrained, literature-grounded local assistant, see [AI architecture and evaluation criteria](docs/evidence-assistant-architecture.md). No trained assistant is deployed, and unpublished experimental inputs remain private.

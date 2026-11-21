@@ -27,3 +27,7 @@ This version is an analysis-framework prototype, not a calibrated ORNL reduction
 ## Current implemented gates
 
 Strict numeric Q/column validation, dI/dQ positivity, file checksum, explicit density requirements, and a fixed-parameter model curve with no silently assumed smearing. More validation is needed before quantitative model selection.
+
+## Compatibility and non-interchangeability
+
+Read [Data compatibility and validation boundaries](validation-compatibility.md) **before** quantitative comparisons between merged and single-configuration products, 1D and 2D data, differing runs, resolution conventions, or structural fit parameters. Consult [Evidence request priorities](evidence-request-priorities.md) for the missing files that would unblock each scientific claim. These documents define policy; they are not all implemented in the current analysis functions.
